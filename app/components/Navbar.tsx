@@ -33,7 +33,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <a href="#accueil" className="flex items-center gap-2">
-            <span className="text-2xl">🔥</span>
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-orange-500/30">
+              <img 
+                src="/hero-bg.jpg" 
+                alt="Logo" 
+                className="w-full h-full object-cover scale-150"
+              />
+            </div>
             <span className="font-[family-name:var(--font-playfair)] text-xl sm:text-2xl font-bold text-fire">
               Pizza Playa
             </span>

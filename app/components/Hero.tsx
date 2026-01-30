@@ -29,8 +29,20 @@ export default function Hero() {
     >
       {/* Background with parallax */}
       <div 
-        className="absolute inset-0 bg-gradient-to-b from-black via-stone-950 to-black parallax-bg"
-        style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        className="absolute inset-0 z-0"
+        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+      >
+        <div className="absolute inset-0 bg-black/60 z-10" />
+        <img 
+          src="/hero-bg.jpg" 
+          alt="Pizza Playa Background" 
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Background with parallax (gradient only) */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-b from-transparent via-stone-950/50 to-black z-10 pointer-events-none"
       />
 
       {/* Decorative fire circles with parallax */}
@@ -62,8 +74,11 @@ export default function Hero() {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-950/50 border border-orange-800/30 rounded-full mb-8 backdrop-blur-sm scale-in">
+          <div className="w-5 h-5 rounded-full overflow-hidden">
+            <img src="/hero-bg.jpg" alt="Logo icon" className="w-full h-full object-cover" />
+          </div>
           <span className="text-orange-400 text-sm font-medium tracking-wide uppercase">
-            🔥 Cuisson au feu de bois
+            Cuisson au feu de bois
           </span>
         </div>
 
