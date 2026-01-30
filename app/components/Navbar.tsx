@@ -22,9 +22,9 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-black/90 backdrop-blur-md shadow-2xl shadow-orange-900/10"
+          ? "bg-black/80 backdrop-blur-xl shadow-2xl shadow-orange-900/20 border-b border-stone-800/30"
           : "bg-transparent"
       }`}
     >
@@ -51,9 +51,10 @@ export default function Navbar() {
             ))}
             <a
               href="tel:0964270762"
-              className="px-5 py-2.5 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white text-sm font-semibold rounded-full transition-all duration-300 shadow-lg shadow-orange-900/30 hover:shadow-orange-900/50"
+              className="group px-5 py-2.5 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white text-sm font-semibold rounded-full transition-all duration-500 shadow-lg shadow-orange-900/30 hover:shadow-orange-900/50 hover:scale-105 relative overflow-hidden"
             >
-              Commander
+              <span className="relative z-10">Commander</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </a>
           </div>
 

@@ -15,21 +15,26 @@ type Tab = "tomate" | "creme" | "desserts" | "boissons";
 
 function PizzaCard({ pizza }: { pizza: Pizza }) {
   return (
-    <div className="group p-5 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-300 hover:bg-stone-900/80">
-      <div className="flex justify-between items-start gap-4">
+    <div className="pizza-card relative group p-5 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 glow-hover cursor-pointer overflow-hidden">
+      <div className="flex justify-between items-start gap-4 relative z-10">
         <div className="flex-1">
-          <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white group-hover:text-orange-300 transition-colors">
+          <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white group-hover:text-orange-300 transition-all duration-300">
             {pizza.name}
           </h3>
-          <p className="text-sm text-stone-400 mt-1 leading-relaxed">
+          <p className="text-sm text-stone-400 mt-1 leading-relaxed group-hover:text-stone-300 transition-colors duration-300">
             {pizza.ingredients}
           </p>
         </div>
-        <div className="text-right shrink-0">
-          <span className="text-xl font-bold text-orange-400">
+        <div className="text-right shrink-0 group-hover:scale-110 transition-transform duration-300">
+          <span className="text-xl font-bold text-orange-400 group-hover:text-orange-300">
             {pizza.price.toFixed(2).replace(".", ",")}€
           </span>
         </div>
+      </div>
+      {/* Decorative corner accent */}
+      <div className="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute top-2 right-2 w-8 h-0.5 bg-gradient-to-l from-orange-500 to-transparent" />
+        <div className="absolute top-2 right-2 w-0.5 h-8 bg-gradient-to-b from-orange-500 to-transparent" />
       </div>
     </div>
   );

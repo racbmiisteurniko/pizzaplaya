@@ -1,4 +1,28 @@
+"use client";
+
 import { distributeurs } from "../data/menu";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
+function DistributeurCard({ lieu, index }: { lieu: string; index: number }) {
+  const { ref, isVisible } = useScrollReveal();
+
+  return (
+    <div
+      ref={ref}
+      className={`group relative p-6 sm:p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center glow-hover cursor-pointer ${
+        isVisible ? "scale-in" : "opacity-0"
+      }`}
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <div className="text-3xl mb-3 group-hover:scale-125 transition-transform duration-500 inline-block">
+        📍
+      </div>
+      <h3 className="font-[family-name:var(--font-playfair)] text-base sm:text-lg font-bold text-white group-hover:text-orange-300 transition-colors duration-300">
+        {lieu}
+      </h3>
+    </div>
+  );
+}
 
 export default function Distributeurs() {
   return (
@@ -25,18 +49,7 @@ export default function Distributeurs() {
         {/* Distributor Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto">
           {distributeurs.map((lieu, i) => (
-            <div
-              key={lieu}
-              className="group relative p-6 sm:p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center"
-              style={{ animationDelay: `${i * 100}ms` }}
-            >
-              <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                📍
-              </div>
-              <h3 className="font-[family-name:var(--font-playfair)] text-base sm:text-lg font-bold text-white group-hover:text-orange-300 transition-colors">
-                {lieu}
-              </h3>
-            </div>
+            <DistributeurCard key={lieu} lieu={lieu} index={i} />
           ))}
         </div>
 

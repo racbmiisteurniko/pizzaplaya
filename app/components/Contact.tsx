@@ -1,3 +1,27 @@
+"use client";
+
+import { useScrollReveal } from "../hooks/useScrollReveal";
+
+function ContactCard({
+  children,
+  index,
+}: {
+  children: React.ReactNode;
+  index: number;
+}) {
+  const { ref, isVisible } = useScrollReveal();
+
+  return (
+    <div
+      ref={ref}
+      className={`${isVisible ? "fade-up" : "opacity-0"}`}
+      style={{ animationDelay: `${index * 0.15}s` }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Contact() {
   return (
     <section id="contact" className="relative py-24 sm:py-32">
@@ -19,63 +43,70 @@ export default function Contact() {
         {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {/* Phone */}
-          <a
-            href="tel:0964270762"
-            className="group p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center"
-          >
-            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              📞
-            </div>
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white mb-2">
-              Téléphone
-            </h3>
-            <p className="text-orange-400 text-lg font-semibold">
-              09 64 27 07 62
-            </p>
-            <p className="text-stone-500 text-sm mt-2">
-              Pour commander ou réserver
-            </p>
-          </a>
+          <ContactCard index={0}>
+            <a
+              href="tel:0964270762"
+              className="block group p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center glow-hover"
+            >
+              <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-500 inline-block">
+                📞
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white mb-2">
+                Téléphone
+              </h3>
+              <p className="text-orange-400 text-lg font-semibold">
+                09 64 27 07 62
+              </p>
+              <p className="text-stone-500 text-sm mt-2">
+                Pour commander ou réserver
+              </p>
+            </a>
+          </ContactCard>
 
           {/* Address */}
-          <div className="group p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center">
-            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              📍
+          <ContactCard index={1}>
+            <div className="group p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center glow-hover">
+              <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-500 inline-block">
+                📍
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white mb-2">
+                Adresse
+              </h3>
+              <p className="text-stone-300">Pré-en-Pail</p>
+              <p className="text-stone-500 text-sm mt-1">Mayenne (53)</p>
             </div>
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white mb-2">
-              Adresse
-            </h3>
-            <p className="text-stone-300">Pré-en-Pail</p>
-            <p className="text-stone-500 text-sm mt-1">Mayenne (53)</p>
-          </div>
+          </ContactCard>
 
           {/* Social */}
-          <a
-            href="https://www.facebook.com/share/17aBGjJkYr/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center"
-          >
-            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-              📘
-            </div>
-            <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white mb-2">
-              Facebook
-            </h3>
-            <p className="text-stone-300">Pizza Playa</p>
-            <p className="text-stone-500 text-sm mt-1">
-              Suivez-nous pour les actus !
-            </p>
-          </a>
+          <ContactCard index={2}>
+            <a
+              href="https://www.facebook.com/share/17aBGjJkYr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group p-8 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 transition-all duration-500 hover:bg-stone-900/80 text-center glow-hover"
+            >
+              <div className="text-4xl mb-4 group-hover:scale-125 transition-transform duration-500 inline-block">
+                📘
+              </div>
+              <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold text-white mb-2">
+                Facebook
+              </h3>
+              <p className="text-stone-300">Pizza Playa</p>
+              <p className="text-stone-500 text-sm mt-1">
+                Suivez-nous pour les actus !
+              </p>
+            </a>
+          </ContactCard>
         </div>
 
         {/* CTA */}
         <div className="mt-16 text-center">
           <a
             href="tel:0964270762"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white text-xl font-bold rounded-full transition-all duration-300 shadow-2xl shadow-orange-900/40 hover:shadow-orange-900/60 hover:scale-105"
+            className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white text-xl font-bold rounded-full transition-all duration-500 shadow-2xl shadow-orange-900/40 hover:shadow-orange-900/60 hover:scale-105 relative overflow-hidden"
           >
-            🔥 Commander maintenant
+            <span className="relative z-10">🔥 Commander maintenant</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </a>
         </div>
       </div>

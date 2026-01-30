@@ -15,24 +15,34 @@ body {
   color: #f5f0eb;
 }
 
-/* Fire glow animation */
+/* Enhanced fire glow animation */
 @keyframes fire-glow {
   0%, 100% {
-    text-shadow: 0 0 10px rgba(255, 120, 30, 0.5), 0 0 30px rgba(255, 80, 0, 0.3);
+    text-shadow: 
+      0 0 10px rgba(255, 120, 30, 0.5), 
+      0 0 30px rgba(255, 80, 0, 0.3),
+      0 0 50px rgba(255, 50, 0, 0.2);
   }
   50% {
-    text-shadow: 0 0 20px rgba(255, 120, 30, 0.8), 0 0 50px rgba(255, 80, 0, 0.5);
+    text-shadow: 
+      0 0 20px rgba(255, 120, 30, 0.8), 
+      0 0 50px rgba(255, 80, 0, 0.5),
+      0 0 80px rgba(255, 50, 0, 0.3);
   }
 }
 
 .fire-glow {
-  animation: fire-glow 3s ease-in-out infinite;
+  animation: fire-glow 2s ease-in-out infinite;
 }
 
-/* Subtle float animation */
+/* Floating animation */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
 }
 
 .float {
@@ -47,11 +57,11 @@ body {
   background-clip: text;
 }
 
-/* Scroll fade-in */
+/* Scroll fade-in animations */
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -59,6 +69,196 @@ body {
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .fade-up {
   animation: fade-up 0.8s ease-out forwards;
+}
+
+.fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+.scale-in {
+  animation: scale-in 0.6s ease-out forwards;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Pizza card hover glow */
+.pizza-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pizza-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(255, 107, 26, 0.2), rgba(255, 80, 0, 0.1));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.pizza-card:hover::before {
+  opacity: 1;
+}
+
+.pizza-card:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Button ripple effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Parallax background */
+.parallax-bg {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glow on hover */
+.glow-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 30px rgba(255, 107, 26, 0.3);
+}
+
+/* Ember particles animation */
+@keyframes ember-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+.ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, rgba(255, 140, 50, 1) 0%, rgba(255, 80, 0, 0.8) 50%, transparent 100%);
+  border-radius: 50%;
+  animation: ember-rise linear infinite;
+  pointer-events: none;
+}
+
+/* Counter animation */
+@keyframes count-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.count-up {
+  animation: count-up 0.6s ease-out forwards;
 }
