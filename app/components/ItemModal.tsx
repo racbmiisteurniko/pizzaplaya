@@ -64,7 +64,7 @@ export default function ItemModal({ item, onClose }: ItemModalProps) {
         {/* Close Button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-10 p-2 bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-colors border border-white/10 group"
+          className="absolute top-4 right-4 z-[30] p-2 bg-black/40 hover:bg-black/60 text-white rounded-full backdrop-blur-md transition-colors border border-white/10 group"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
