@@ -58,7 +58,7 @@ export default function MenuSection() {
 
   const tabs: { key: Tab; label: string; emoji: string }[] = [
     { key: "tomate", label: "Base Tomate", emoji: "🍅" },
-    { key: "creme", label: "Base Crème", emoji: "🧀" },
+    { key: "creme", label: "Base Crème", emoji: "🥛" },
     { key: "desserts", label: "Desserts", emoji: "🍨" },
     { key: "boissons", label: "Boissons", emoji: "🍺" },
   ];

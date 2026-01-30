@@ -112,12 +112,12 @@ export default function Hero() {
             <span className="relative z-10">📞 09 64 27 07 62</span>
           </a>
         </div>
+      </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 float fade-up stagger-6">
-          <div className="w-6 h-10 border-2 border-stone-600 rounded-full flex justify-center pt-2">
-            <div className="w-1.5 h-3 bg-orange-500 rounded-full animate-bounce" />
-          </div>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 float fade-up stagger-6 z-10">
+        <div className="w-6 h-10 border-2 border-stone-600 rounded-full flex justify-center pt-2">
+          <div className="w-1.5 h-3 bg-orange-500 rounded-full animate-bounce" />
         </div>
       </div>
     </section>

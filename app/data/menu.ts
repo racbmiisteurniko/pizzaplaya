@@ -32,7 +32,7 @@ export const pizzasCreme: Pizza[] = [
   { name: "Mayonnaise", ingredients: "Mozzarella, haché de bœuf, champignons, œuf, oignons, poivre", price: 13 },
   { name: "Toutinière", ingredients: "Mozzarella, andouille, pommes de terre, camembert, persil", price: 13 },
   { name: "Normandie", ingredients: "Mozzarella, lardons, pommes de terre, camembert", price: 12 },
-  { name: "Tartifl'", ingredients: "Mozzarella, lardons, pommes de terre, reblochon, ail, oignons, poivre", price: 13 },
+  { name: "Tartiflette", ingredients: "Mozzarella, lardons, pommes de terre, reblochon, ail, oignons, poivre", price: 13 },
   { name: "Raclette", ingredients: "Mozzarella, jambon, pommes de terre, bacon, fromage à raclette, poivre", price: 13 },
   { name: "Chèvre-Miel", ingredients: "Mozzarella, chèvre, miel, origan", price: 11.5 },
   { name: "Indienne", ingredients: "Mozzarella, poulet, champignons, sauce curry, origan", price: 12.5 },

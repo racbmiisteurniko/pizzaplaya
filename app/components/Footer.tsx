@@ -6,7 +6,6 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Logo */}
             <div className="flex items-center gap-2">
-              <span className="text-xl">🔥</span>
               <span className="font-[family-name:var(--font-playfair)] text-xl font-bold text-fire">
                 Pizza Playa
               </span>
