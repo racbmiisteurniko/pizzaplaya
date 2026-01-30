@@ -307,3 +307,10 @@ body {
 .leaflet-control-attribution a {
   color: #a8a29e !important;
 }
+
+/* Shimmer animation for placeholders */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

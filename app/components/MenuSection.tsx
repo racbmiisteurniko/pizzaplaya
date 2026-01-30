@@ -10,27 +10,43 @@ import {
   type Pizza,
   type MenuItem,
 } from "../data/menu";
+import ItemModal from "./ItemModal";
 
 type Tab = "tomate" | "creme" | "desserts" | "boissons";
 
-function PizzaCard({ pizza }: { pizza: Pizza }) {
+function PizzaCard({ pizza, onClick }: { pizza: Pizza; onClick: () => void }) {
   return (
-    <div className="pizza-card relative group p-5 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 glow-hover cursor-pointer overflow-hidden">
-      <div className="flex justify-between items-start gap-4 relative z-10">
-        <div className="flex-1">
-          <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white group-hover:text-orange-300 transition-all duration-300">
-            {pizza.name}
-          </h3>
-          <p className="text-sm text-stone-400 mt-1 leading-relaxed group-hover:text-stone-300 transition-colors duration-300">
+    <div 
+      onClick={onClick}
+      className="pizza-card relative group p-4 sm:p-5 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-2xl hover:border-orange-800/40 glow-hover cursor-pointer overflow-hidden transition-all duration-300 hover:bg-stone-800/60"
+    >
+      <div className="flex items-start gap-4 relative z-10">
+        {/* Thumbnail Placeholder */}
+        <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-stone-800 border border-stone-700 overflow-hidden relative group-hover:scale-105 transition-transform duration-500">
+           <div className="absolute inset-0 bg-gradient-to-br from-stone-700 to-stone-900 opacity-50"></div>
+           <div className="absolute inset-0 flex items-center justify-center text-2xl sm:text-3xl">
+              🍕
+           </div>
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <div className="flex justify-between items-start gap-2">
+            <h3 className="font-[family-name:var(--font-playfair)] text-lg font-bold text-white group-hover:text-orange-300 transition-all duration-300 truncate pr-2">
+              {pizza.name}
+            </h3>
+            <span className="shrink-0 text-lg font-bold text-orange-400 group-hover:text-orange-300">
+              {pizza.price.toFixed(2).replace(".", ",")}€
+            </span>
+          </div>
+          <p className="text-sm text-stone-400 mt-1 leading-relaxed group-hover:text-stone-300 transition-colors duration-300 line-clamp-2">
             {pizza.ingredients}
           </p>
-        </div>
-        <div className="text-right shrink-0 group-hover:scale-110 transition-transform duration-300">
-          <span className="text-xl font-bold text-orange-400 group-hover:text-orange-300">
-            {pizza.price.toFixed(2).replace(".", ",")}€
-          </span>
+          <p className="text-xs text-orange-500/70 mt-2 font-medium uppercase tracking-wide group-hover:text-orange-500 transition-colors">
+            Voir le détail →
+          </p>
         </div>
       </div>
+      
       {/* Decorative corner accent */}
       <div className="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
         <div className="absolute top-2 right-2 w-8 h-0.5 bg-gradient-to-l from-orange-500 to-transparent" />
@@ -40,21 +56,32 @@ function PizzaCard({ pizza }: { pizza: Pizza }) {
   );
 }
 
-function SimpleCard({ item }: { item: MenuItem }) {
+function SimpleCard({ item, onClick, icon }: { item: MenuItem; onClick: () => void; icon: string }) {
   return (
-    <div className="flex justify-between items-center p-4 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-xl hover:border-orange-800/40 transition-all duration-300">
-      <span className="text-stone-200 font-medium">{item.name}</span>
-      <span className="text-orange-400 font-bold">
-        {typeof item.price === "number"
-          ? `${item.price.toFixed(2).replace(".", ",")}€`
-          : `${item.price}€`}
-      </span>
+    <div 
+      onClick={onClick}
+      className="flex items-center gap-3 p-3 sm:p-4 bg-stone-900/60 backdrop-blur-sm border border-stone-800/50 rounded-xl hover:border-orange-800/40 transition-all duration-300 cursor-pointer hover:bg-stone-800/60 group"
+    >
+      {/* Mini Thumbnail */}
+      <div className="shrink-0 w-12 h-12 rounded-lg bg-stone-800 border border-stone-700 flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
+         {icon}
+      </div>
+      
+      <div className="flex-1 min-w-0 flex justify-between items-center gap-2">
+        <span className="text-stone-200 font-medium group-hover:text-white transition-colors truncate">{item.name}</span>
+        <span className="shrink-0 text-orange-400 font-bold group-hover:text-orange-300">
+          {typeof item.price === "number"
+            ? `${item.price.toFixed(2).replace(".", ",")}€`
+            : `${item.price}€`}
+        </span>
+      </div>
     </div>
   );
 }
 
 export default function MenuSection() {
   const [activeTab, setActiveTab] = useState<Tab>("tomate");
+  const [selectedItem, setSelectedItem] = useState<Pizza | MenuItem | null>(null);
 
   const tabs: { key: Tab; label: string; emoji: string }[] = [
     { key: "tomate", label: "Base Tomate", emoji: "🍅" },
@@ -104,17 +131,25 @@ export default function MenuSection() {
 
         {/* Pizza Cards */}
         {activeTab === "tomate" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {pizzasTomate.map((pizza) => (
-              <PizzaCard key={pizza.name} pizza={pizza} />
+              <PizzaCard 
+                key={pizza.name} 
+                pizza={pizza} 
+                onClick={() => setSelectedItem(pizza)}
+              />
             ))}
           </div>
         )}
 
         {activeTab === "creme" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {pizzasCreme.map((pizza) => (
-              <PizzaCard key={pizza.name} pizza={pizza} />
+              <PizzaCard 
+                key={pizza.name} 
+                pizza={pizza} 
+                onClick={() => setSelectedItem(pizza)}
+              />
             ))}
           </div>
         )}
@@ -122,7 +157,12 @@ export default function MenuSection() {
         {activeTab === "desserts" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {desserts.map((item) => (
-              <SimpleCard key={item.name} item={item} />
+              <SimpleCard 
+                key={item.name} 
+                item={item} 
+                icon="🍨"
+                onClick={() => setSelectedItem(item)}
+              />
             ))}
           </div>
         )}
@@ -130,7 +170,12 @@ export default function MenuSection() {
         {activeTab === "boissons" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {boissons.map((item) => (
-              <SimpleCard key={item.name} item={item} />
+              <SimpleCard 
+                key={item.name} 
+                item={item} 
+                icon="🍺"
+                onClick={() => setSelectedItem(item)}
+              />
             ))}
           </div>
         )}
@@ -155,6 +200,12 @@ export default function MenuSection() {
           Origine des viandes &quot;France et UE&quot; · Liste de substances allergènes
           disponible sur demande
         </p>
+
+        {/* Modal */}
+        <ItemModal 
+            item={selectedItem} 
+            onClose={() => setSelectedItem(null)} 
+        />
       </div>
     </section>
   );
