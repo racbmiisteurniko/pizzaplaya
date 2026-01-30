@@ -105,7 +105,7 @@ export default function Contact() {
             href="tel:0964270762"
             className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white text-xl font-bold rounded-full transition-all duration-500 shadow-2xl shadow-orange-900/40 hover:shadow-orange-900/60 hover:scale-105 relative overflow-hidden"
           >
-            <span className="relative z-10">🔥 Commander maintenant</span>
+            <span className="relative z-10">Commander maintenant</span>
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </a>
         </div>
