@@ -6,6 +6,7 @@ const links = [
   { href: "#accueil", label: "Accueil" },
   { href: "#carte", label: "La Carte" },
   { href: "#distributeurs", label: "Distributeurs" },
+  { href: "#carte-interactive", label: "Carte" },
   { href: "#horaires", label: "Horaires" },
   { href: "#contact", label: "Contact" },
 ];
