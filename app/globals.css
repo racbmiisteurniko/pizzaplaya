@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-inter: "Inter", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #0a0a0a;
+  color: #f5f0eb;
+}
+
+/* Fire glow animation */
+@keyframes fire-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 120, 30, 0.5), 0 0 30px rgba(255, 80, 0, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 120, 30, 0.8), 0 0 50px rgba(255, 80, 0, 0.5);
+  }
+}
+
+.fire-glow {
+  animation: fire-glow 3s ease-in-out infinite;
+}
+
+/* Subtle float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Gradient text */
+.text-fire {
+  background: linear-gradient(135deg, #ff6b1a 0%, #ff9d4a 50%, #ffc73b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scroll fade-in */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
