@@ -69,11 +69,16 @@ export const supplements: MenuItem[] = [
   { name: "Bol de salade", price: 2 },
 ];
 
-export const distributeurs = [
-  "Pré-en-Pail",
-  "Saint Samson",
-  "Gorron-les-Chapelles",
-  "Saint-Denis-sur-Sarthon",
-  "Saint-Pierre-des-Nids",
-  "Villaines-la-Juhel",
+export interface Distributeur {
+  lieu: string;
+  horaires: string;
+}
+
+export const distributeurs: Distributeur[] = [
+  { lieu: "Pré-en-Pail", horaires: "24h/24 · 7j/7" },
+  { lieu: "Saint Samson", horaires: "24h/24 · 7j/7" },
+  { lieu: "Gorron-les-Chapelles", horaires: "24h/24 · 7j/7" },
+  { lieu: "Saint-Denis-sur-Sarthon", horaires: "24h/24 · 7j/7" },
+  { lieu: "Saint-Pierre-des-Nids", horaires: "24h/24 · 7j/7" },
+  { lieu: "Villaines-la-Juhel", horaires: "24h/24 · 7j/7" },
 ];

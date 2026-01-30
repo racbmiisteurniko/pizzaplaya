@@ -3,7 +3,15 @@
 import { distributeurs } from "../data/menu";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-function DistributeurCard({ lieu, index }: { lieu: string; index: number }) {
+function DistributeurCard({ 
+  lieu, 
+  horaires, 
+  index 
+}: { 
+  lieu: string; 
+  horaires: string; 
+  index: number;
+}) {
   const { ref, isVisible } = useScrollReveal();
 
   return (
@@ -16,6 +24,9 @@ function DistributeurCard({ lieu, index }: { lieu: string; index: number }) {
     >
       <div className="text-3xl mb-3 group-hover:scale-125 transition-transform duration-500 inline-block">
         📍
+      </div>
+      <div className="text-orange-400 text-xs sm:text-sm font-medium mb-2">
+        {horaires}
       </div>
       <h3 className="font-[family-name:var(--font-playfair)] text-base sm:text-lg font-bold text-white group-hover:text-orange-300 transition-colors duration-300">
         {lieu}
@@ -48,8 +59,13 @@ export default function Distributeurs() {
 
         {/* Distributor Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 max-w-3xl mx-auto">
-          {distributeurs.map((lieu, i) => (
-            <DistributeurCard key={lieu} lieu={lieu} index={i} />
+          {distributeurs.map((distributeur, i) => (
+            <DistributeurCard 
+              key={distributeur.lieu} 
+              lieu={distributeur.lieu} 
+              horaires={distributeur.horaires}
+              index={i} 
+            />
           ))}
         </div>
 
