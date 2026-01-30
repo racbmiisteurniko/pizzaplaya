@@ -83,9 +83,9 @@ export default function Hero() {
         </div>
 
         {/* Main Title with stagger */}
-        <h1 className="font-[family-name:var(--font-playfair)] text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-6">
-          <span className="block text-fire fire-glow fade-up stagger-1">Pizza</span>
-          <span className="block text-white fade-up stagger-2">Playa</span>
+        <h1 className="font-[family-name:var(--font-playfair)] text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-6 whitespace-nowrap">
+          <span className="inline-block text-fire fire-glow fade-up stagger-1 mr-3 sm:mr-6">Pizza</span>
+          <span className="inline-block text-white fade-up stagger-2">Playa</span>
         </h1>
 
         {/* Subtitle */}
